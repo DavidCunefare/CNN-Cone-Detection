@@ -3,9 +3,13 @@ Please cite this paper if you use any component of this software: D. Cunefare, L
 
 # Notes:
 •	The code was tested in MatLab 2016b and utilizes MatConvNet-1.0-Beta23 developed by the MatConvNet Team (see http://www.vlfeat.org/matconvnet/).
+
 •	Coordinates are saved as (x , y) pixel positions (in Matlab’s default coordinate system) column wise.
+
 •	AFLD cords are saved in the “CombinedPos” variable in each .mat file.
+
 •	Results of the CNN method are saved in the “Images and Results\...\Validation CNN Coord” folder. Cone coordinates are saved as the “CNNPos” variable in each .mat file.
+
 •	Example code for displaying an image marked with cone locations found using a trained network is given in “DisplayMarkedImageExample.m”.
 
 # Running:
@@ -27,8 +31,11 @@ Code for producing the results of the M-CNN is provided in “RunCNNConeDetectio
 
 # New Data Sets:
 1) To use your own dataset for training a network add a new case in the “get_parameters_Cone_CNN.m” following the same formatting. If your data is saved in a different format, you will need to change the way the data is read in the supporting functions.
+
 •	Training images should be saved in their own folder. Currently images are required to be readable using matlab’s imread function, and to be 2D/grayscale.
+
 •	Manual coordinates for the training images should have the same base name as the images (with additional text at the end if wanted). The C\coordinates should saved as (x , y) pixel positions (in Matlab’s default coordinate system) column wise. The program is currently only set up to read .csv or .txt files (in the same format as the data sets provided).
+
 •	Validation images and coordinates should follow the same guidelines, but are not required for training a network and finding detection parameters.
 
 2) To run, open “Code\RunCNNConeDetection.m”, change the ““DataSet” variable to the name of your new case and run the script. If you are not using a validation data set, change the “ValidateFlag” variable to 0 and comment out the “SaveValidationCones” function.
@@ -43,14 +50,23 @@ To use an already trained network on a new set of images, use “RunCNNnewSet.m�
 
 # Main Functions:
 RunCNNConeDetection: Main script for training a network, optimizing detection parameters, and saving validation results (cone positions and probability maps)
+
 RunCNNnewSet: Script for using a trained network/parameters for detecting and saving cone locations on a new set of images
+
 get_parameters_Cone_CNN:  Returns hyper-parameters for training network, and directory locations for saving/loading data
+
 CreateConeIMDB: Creates an image database of labeled cone and non-cone patches from the training data set based on manual markings.
+
 cnn_Cones and cnn_train_Cones: Trains the network weights using the extracted image patches
-SaveProbabilityMaps:	Use trained network to create and save probability maps for the training and validation images (TrainFlag and ValidateFlag can be set to determine which sets are processed)
+
+SaveProbabilityMaps:	Use trained network to create and save probability maps for the training and validation images (TrainFlag and 
+ValidateFlag can be set to determine which sets are processed)
+
 OptomizeConeDetectionParameters: Uses a brute fource search to find detection parameters that maximize the average Dice’s coefficient with respect to manual grading over the training data set.
+
 SaveValidationCones: Uses trained network and parameters to detect and save cone locations in validation data set
 
 cnn_Cones_init: function for initializing the CNN architecture and hyper-parameters.  
+
 GetConePosSingle: function to use a trained network/parameters to find cone positions in a single input image
 

@@ -4,6 +4,8 @@ Please cite this paper if you use any component of this software: D. Cunefare, L
 # Notes:
 •	The code was tested in MatLab 2016b and utilizes MatConvNet-1.0-Beta23 developed by the MatConvNet Team (see http://www.vlfeat.org/matconvnet/).
 
+•	Due to file size constraints, the patch databases were split into parts. If you wish to use the same training patches as in the paper, run “Code\ Reassemble_IMDBs.m”. You may delete the folder “IMDB components” afterwards.
+
 •	Coordinates are saved as (x , y) pixel positions (in Matlab’s default coordinate system) column wise.
 
 •	AFLD cords are saved in the “CombinedPos” variable in each .mat file.
